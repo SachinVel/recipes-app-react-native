@@ -2,6 +2,8 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
 import {createDrawerNavigator} from '@react-navigation/drawer' 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import HomeScreen from '../screens/Home/HomeScreen';
 import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 import RecipeScreen from '../screens/Recipe/RecipeScreen';
@@ -56,6 +58,20 @@ function DrawerStack() {
   )
 } 
 
+const Tab = createBottomTabNavigator();
+
+function TabStack() {
+  return(
+    <Tab.Navigator
+      initialRouteName='Main'
+      screenOptions={{headerShown: false}}
+    >
+      <Stack.Screen name='Home' component={HomeScreen} />
+      <Stack.Screen name='Categories' component={CategoriesScreen}/>
+      <Stack.Screen name='Search' component={SearchScreen} />
+    </Tab.Navigator>
+  )
+} 
 
  export default function AppContainer() {
   return(
