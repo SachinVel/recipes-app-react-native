@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SeoulSpiceFoodAPP",
-    "slug": "seoulspice-food-app",
+    "slug": "seoul-spice",
     "description": "React Native Menu App of Seoul Spice. ",
     "privacy": "public",
     "version": "1.0.0",
@@ -14,22 +14,34 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/89212b41-c160-4e67-a63e-d295317c306c"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sachinvel.seoulspice"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.sachinvel.seoulspice"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "89212b41-c160-4e67-a63e-d295317c306c"
+      }
+    },
+    "owner": "sachinvel",
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }

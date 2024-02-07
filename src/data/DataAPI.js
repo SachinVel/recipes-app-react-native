@@ -1,6 +1,7 @@
 
-const SPREADSHEET_ID = '1Nt4RhcEZElyV-Kc7xJ44CgpGfZGIni82uRSGBzJ9MkY';
-const API_KEY = 'AIzaSyDqwVQkFKjHHZohoKwoBFvu0RmHHKbBkks';
+const SPREADSHEET_ID = process.env.EXPO_PUBLIC_SPREADSHEET_ID;
+const API_KEY = process.env.EXPO_PUBLIC_API_KEY;
+const SHEETDB_TOKEN = process.env.EXPO_PUBLIC_SHEETDB_TOKEN;
 
 const columnKey = {
   id: 0,
@@ -45,7 +46,7 @@ export const writeDataToSheet = async (data) => {
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", "Bearer bdoj435cbvvyakgjddgy0ea7c0qatadamy3yvmep");
+      myHeaders.append("Authorization", `Bearer ${SHEETDB_TOKEN}`);
 
       var raw = JSON.stringify({
         "data": [

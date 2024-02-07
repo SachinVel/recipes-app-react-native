@@ -1,10 +1,12 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { FlatList, Text, View, TouchableHighlight, Image } from "react-native";
 import styles from "./styles";
-import { getMenu } from "../../data/MockDataAPI";
+import { getMenu } from "../../data/DataAPI";
 import { useGlobalContext } from "../../components/GlobalContext/GlobalContext";
 
 export default function HomeScreen(props) {
+
+  const {navigation} = props;
   
   const [isDataAvailable, setIsDataAvailable] = useState(false);
   const [menuItems, setMenuItems] = useState(false);

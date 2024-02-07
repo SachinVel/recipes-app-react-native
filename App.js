@@ -5,6 +5,7 @@ import { registerRootComponent } from 'expo';
 import Header from './src/components/Header/Header';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GlobalProvider } from './src/components/GlobalContext/GlobalContext';
+import { NativeBaseProvider } from "native-base";
 
 
 
@@ -13,8 +14,10 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <GlobalProvider>
-        <Header />
-        <AppContainer />
+        <NativeBaseProvider>
+          <Header />
+          <AppContainer />
+        </NativeBaseProvider>
       </GlobalProvider>
     </SafeAreaProvider>
 

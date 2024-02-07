@@ -1,9 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { FlatList, Text, View, Image, TouchableHighlight, Pressable } from "react-native";
 import styles from "./styles";
-import { getMenu } from "../../data/MockDataAPI";
-import { GestureHandlerRootView, TextInput } from "react-native-gesture-handler";
+import { getMenu } from "../../data/DataAPI";
 import { useGlobalContext } from "../../components/GlobalContext/GlobalContext";
+import { TextInput } from "react-native-paper";
 
 export default function SearchScreen(props) {
   const { navigation } = props;
@@ -13,7 +13,7 @@ export default function SearchScreen(props) {
   const [menuItems, setMenuItems] = useState(false);
   const { state, dispatch } = useGlobalContext();
 
-  
+
   const getRecipesByMenuName = (menuName) => {
     const nameUpper = menuName.toUpperCase();
     const menuArr = [];
@@ -44,7 +44,7 @@ export default function SearchScreen(props) {
 
   useEffect(() => {
     setMenuItems(state.menuItems);
-  },[state]);
+  }, [state]);
 
   useEffect(() => { }, [value]);
 
@@ -80,21 +80,19 @@ export default function SearchScreen(props) {
 
   return (
     <View>
-      <GestureHandlerRootView>
-        <View style={styles.searchContainer}>
-          <Image style={styles.searchIcon} source={require("../../../assets/icons/search.png")} />
-          <TextInput
-            style={styles.searchInput}
-            onChangeText={handleSearch}
-            value={value}
-          />
-          <Pressable onPress={() => handleSearch("")}>
-            <Image style={styles.searchIcon} source={require("../../../assets/icons/close.png")} />
-          </Pressable>
-        </View>
-      </GestureHandlerRootView>
+      <View style={styles.searchContainer}>
+        <Image style={styles.searchIcon} source={require("../../../assets/icons/search.png")} />
+        <TextInput
+          style={styles.searchInput}
+          onChangeText={handleSearch}
+          value={value}
+        />
+        <Pressable onPress={() => handleSearch("")}>
+          <Image style={styles.searchIcon} source={require("../../../assets/icons/close.png")} />
+        </Pressable>
+      </View>
 
-      <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={data} renderItem={renderRecipes} keyExtractor={(item) => `${item.recipeId}`} />
+      <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={data} renderItem={renderRecipes} keyExtractor={(item) => `${item.id}`} />
     </View>
   );
 }

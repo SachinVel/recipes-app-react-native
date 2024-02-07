@@ -12,9 +12,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     pickerContainer: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 10,
+        marginTop: 5,
+        marginBottom: 15,
         paddingHorizontal: 10,
     },
     multilineInput: {
