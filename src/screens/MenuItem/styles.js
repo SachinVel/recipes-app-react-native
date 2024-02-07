@@ -8,7 +8,16 @@ const styles = StyleSheet.create({
     flex: 1
   },
   carouselContainer: {
-    minHeight: 250
+    minHeight: 300,
+  },
+  backButton: {
+    position: 'absolute',
+  },
+  photo: {
+    width: '100%',
+    borderRadius: 15,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
   },
   carousel: {},
 

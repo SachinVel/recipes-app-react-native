@@ -13,9 +13,14 @@ const styles = StyleSheet.create({
   searchContainer: { 
     flexDirection: "row", 
     alignItems: "center", 
-    backgroundColor: "#EDEDED", 
+    backgroundColor: "#EDEDED",
+    borderColor : '#111',
+    borderWidth : 1, 
     borderRadius: 10, 
-    width: 250,
+    width: "90%",
+    marginLeft :"5%",
+    marginRight:"5%",
+    marginTop : 10,
     justifyContent: "space-around"
   },
   searchIcon: { 
