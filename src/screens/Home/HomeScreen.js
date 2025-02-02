@@ -3,29 +3,34 @@ import { FlatList, Text, View, TouchableHighlight, Image } from "react-native";
 import styles from "./styles";
 import { getMenu } from "../../data/DataAPI";
 import { useGlobalContext } from "../../components/GlobalContext/GlobalContext";
+import { SafeAreaView } from "react-native-safe-area-context";
+import ItemModal from "../../components/ItemModel";
 
 export default function HomeScreen(props) {
 
-  const {navigation} = props;
-  
   const [isDataAvailable, setIsDataAvailable] = useState(false);
   const [menuItems, setMenuItems] = useState(false);
   const { state, dispatch } = useGlobalContext();
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useLayoutEffect(() => {
     getMenu().then((menuItems) => {
       setIsDataAvailable(true);
       setMenuItems(menuItems);
-      dispatch({menuItems:menuItems});
+      dispatch({ menuItems: menuItems });
     });
-  },[]);
+  }, []);
 
   useEffect(() => {
     setMenuItems(state.menuItems);
-  },[state]);
+  }, [state]);
 
   const onPressRecipe = (item) => {
-    navigation.navigate("Recipe", { item });
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
   };
 
   const renderRecipes = ({ item }) => (
@@ -42,11 +47,21 @@ export default function HomeScreen(props) {
   );
 
   return (
-    <View>
+    <SafeAreaView >
       {
-        isDataAvailable && <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={menuItems} renderItem={renderRecipes} keyExtractor={(item) => `${item.id}`} />
+        isDataAvailable && (
+          <FlatList
+            vertical
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            data={menuItems}
+            renderItem={renderRecipes}
+            keyExtractor={(item) => `${item.id}`}
+            // contentContainerStyle={{ width: '100%' }}
+          />
+        )
       }
-
-    </View>
+      <ItemModal item={selectedItem} onClose={handleCloseModal} />
+    </SafeAreaView>
   );
 }

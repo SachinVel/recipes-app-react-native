@@ -4,14 +4,17 @@ import styles from "./styles";
 import { getMenu } from "../../data/DataAPI";
 import { useGlobalContext } from "../../components/GlobalContext/GlobalContext";
 import { TextInput } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
+import ItemModal from "../../components/ItemModel";
 
-export default function SearchScreen(props) {
-  const { navigation } = props;
+export default function SearchScreen() {
 
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
   const [menuItems, setMenuItems] = useState(false);
-  const { state, dispatch } = useGlobalContext();
+  const { state } = useGlobalContext();
+
+  const [selectedItem, setSelectedItem] = useState(null);
 
 
   const getRecipesByMenuName = (menuName) => {
@@ -63,7 +66,11 @@ export default function SearchScreen(props) {
   };
 
   const onPressRecipe = (item) => {
-    navigation.navigate("Recipe", { item });
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
   };
 
   const renderRecipes = ({ item }) => (
@@ -78,8 +85,9 @@ export default function SearchScreen(props) {
     </View >
   );
 
+
   return (
-    <View>
+    <SafeAreaView>
       <View style={styles.searchContainer}>
         <Image style={styles.searchIcon} source={require("../../../assets/icons/search.png")} />
         <TextInput
@@ -93,6 +101,8 @@ export default function SearchScreen(props) {
       </View>
 
       <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={data} renderItem={renderRecipes} keyExtractor={(item) => `${item.id}`} />
-    </View>
+
+      <ItemModal item={selectedItem} onClose={handleCloseModal} />
+    </SafeAreaView>
   );
 }

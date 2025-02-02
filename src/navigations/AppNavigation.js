@@ -28,7 +28,7 @@ const getTabBarIcon = (route, focused, color, size) => {
 function TabStack() {
   return (
     <Tab.Navigator
-      initialRouteName='Main'
+      initialRouteName='Home'
       screenOptions={({ route, navigation }) => ({
         tabBarIcon: ({ focused, color, size }) => getTabBarIcon(route, focused, color, size),
         headerShown: false,
@@ -37,20 +37,25 @@ function TabStack() {
         tabBarInactiveTintColor: "white",
         tabBarStyle: [
           {
-            'backgroundColor': '#6750a4'
+            backgroundColor: '#6750a4',
+            justifyContent: 'center', // Center align the menu
+            alignContent: 'center', // Center align the menu
+            display: 'flex',
+            width:'100%'
           },
           null
         ],
         tabBarLabelStyle: {
           fontWeight: 'bold', // Make the tab label bold
-          fontSize: 12
+          fontSize: 13,
+          textAlign: 'left', // Center align the text
         },
       })}
     >
       <Tab.Screen name='Home' component={HomeScreen} />
       <Tab.Screen name='Add' component={AddScreen} />
       <Tab.Screen name='Search' component={SearchScreen} />
-      <Tab.Screen name='Recipe' component={RecipeScreen} options={{ tabBarButton: () => null }} />
+      {/* <Tab.Screen name='Recipe' component={RecipeScreen} options={{ tabBarButton: () => null }} /> */}
     </Tab.Navigator>
   )
 }

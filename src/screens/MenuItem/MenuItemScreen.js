@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ScrollView,
   Text,
@@ -7,23 +7,11 @@ import {
   TouchableHighlight,
 } from "react-native";
 import styles from "./styles";
-import BackButton from "../../components/BackButton/BackButton";
 
-export default function MenuItemScreen(props) {
-  const { navigation, route } = props;
-
-  const item = route.params?.item;
-  const category = item.category;
-  const title = item.title;
+export default function MenuItemScreen({item}) {
 
   return (
     <ScrollView style={styles.container}>
-      <BackButton
-        style={styles.backButton}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
       <View style={styles.carouselContainer}>
         <View style={styles.carousel}>
           <Image style={styles.image} source={{ uri: item.photoUrl }} />
@@ -32,11 +20,7 @@ export default function MenuItemScreen(props) {
       <View style={styles.infoRecipeContainer}>
         <Text style={styles.infoRecipeName}>{item.title}</Text>
         <View style={styles.infoContainer}>
-          <TouchableHighlight
-            onPress={() =>
-              navigation.navigate("RecipesList", { category, title })
-            }
-          >
+          <TouchableHighlight>
             <Text style={styles.category}>
               {item.category.toUpperCase()}
             </Text>

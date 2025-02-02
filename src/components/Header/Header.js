@@ -8,7 +8,7 @@ import styles from "./styles";
 export default function Header() {
     return (
         <Appbar.Header style={styles.header}>
-            <Appbar.Content style={styles.container} title="Seoul Spice Menu"  titleStyle={{color:"white"}}/>
+            <Appbar.Content style={styles.container} title="Restaurant Menu"  titleStyle={{color:"white"}}/>
             <StatusBar />
         </Appbar.Header>
     );

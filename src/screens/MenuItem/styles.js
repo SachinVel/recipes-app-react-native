@@ -5,13 +5,12 @@ const { width: viewportWidth } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    flex: 1
   },
   carouselContainer: {
-    minHeight: 300,
-  },
-  backButton: {
-    position: 'absolute',
+    height: 150,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
   photo: {
     width: '100%',
@@ -19,12 +18,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0
   },
-  carousel: {},
-
   image: {
-    ...StyleSheet.absoluteFillObject,
-    width: '100%',
-    height: 250
+    width: 150,
+    height: 150
   },
   imageContainer: {
     flex: 1,
@@ -32,22 +28,8 @@ const styles = StyleSheet.create({
     width: viewportWidth,
     height: 250
   },
-  paginationContainer: {
-    flex: 1,
-    position: 'absolute',
-    alignSelf: 'center',
-    paddingVertical: 8,
-    marginTop: 200
-  },
-  paginationDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 0
-  },
   infoRecipeContainer: {
     flex: 1,
-    margin: 25,
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center'
