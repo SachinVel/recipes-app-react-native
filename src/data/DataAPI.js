@@ -14,7 +14,6 @@ const columnKey = {
 
 const readDataFromSheet = async () => {
   try {
-
     let data = await fetch(
       `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/sheet1?valueRenderOption=FORMATTED_VALUE&key=${API_KEY}`
     );
